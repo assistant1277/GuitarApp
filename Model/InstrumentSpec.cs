@@ -9,7 +9,7 @@ namespace GuitarApp.Model
 {
     public class InstrumentSpec
     {
-        //read only property for builder of instrument like fender,gibson
+        //read only property for builder of instrument like fender,gibson,ryan
         public InstrumentSpecBuilderEnum Builder { get; }
         public string Model { get; }
 
