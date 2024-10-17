@@ -121,7 +121,7 @@ namespace GuitarApp.Controller
             //check if the typeInput string is null or empty then
             // try to convert typeInput into a valid InstrumentSpecType enum value
             // Enum.TryParse returns true if conversion is successful
-            // true as the second argument means the parsing should ignore case means case-insensitive
+            // true as the second argument means the parsing should ignore case means case insensitive
             // out _ means the result of the parsing is ignored means we dont need to store the parsed value
             if (string.IsNullOrEmpty(typeInput) || !Enum.TryParse<InstrumentSpecType>(typeInput, true, out _))
             {
