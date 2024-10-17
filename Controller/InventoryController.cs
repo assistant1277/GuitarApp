@@ -28,7 +28,13 @@ namespace GuitarApp.Controller
 
             //build new instrument specification based on validated inputs
             var spec = new InstrumentSpecBuilder()
-                .Builder(Enum.Parse<InstrumentSpecBuilderEnum>(builderInput))
+
+                //explaining Builder(Enum.Parse<InstrumentSpecBuilderEnum>(builderInput)) ->
+                //convert string input 'builderInput' means FENDER/fender into corresponding enum value from 'InstrumentSpecBuilderEnum'
+                //'builderInput must match valid value in 'InstrumentSpecBuilderEnum' such as "fender", "gibson",etc
+                //if input is invalid it will throw exception
+                //sets Builder property of instrument specification using parsed enum value like InstrumentSpecBuilderEnum.FENDER
+                .Builder(Enum.Parse<InstrumentSpecBuilderEnum>(builderInput)) 
                 .Model(modelInput)
                 .Type(Enum.Parse<InstrumentSpecType>(typeInput))
                 .BackWood(Enum.Parse<InstrumentSpecWood>(backWoodInput))
@@ -76,7 +82,7 @@ namespace GuitarApp.Controller
                 throw new InvalidModelException("\nSerial number cannot be null or empty\n");
             }
 
-            //use the inventory service to retrieve instrument by its serial number
+            //use inventory service to retrieve instrument by its serial number
             return inventoryService.GetInstrumentBySerialNumber(serialNumber);
         }
 
@@ -89,7 +95,7 @@ namespace GuitarApp.Controller
             //builderInput -> means string to convert into enum
             //true -> this parameter indicates that parse operation should ignore case means making it case insensitive
             //out _ -> out parameter is used to store result of parse operation and we use _ as a discard means we dont care about actual enum value produced by parse operation
-            // returns true if parsing was successful means builderInput matched one of the enum names and
+            // returns true if parsing was successful means builderInput matched one of enum names and
             //false if the parsing failed means builderInput does not match any enum name
             if (string.IsNullOrEmpty(builderInput) || !Enum.TryParse<InstrumentSpecBuilderEnum>(builderInput, true, out _))
             {
@@ -98,7 +104,7 @@ namespace GuitarApp.Controller
             }
         }
 
-        //method to validate the model input
+        //method to validate model input
         private void ValidateModel(string modelInput)
         {
             //check if input is null or empty
