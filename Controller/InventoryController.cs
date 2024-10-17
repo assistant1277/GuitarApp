@@ -31,7 +31,7 @@ namespace GuitarApp.Controller
 
                 //explaining Builder(Enum.Parse<InstrumentSpecBuilderEnum>(builderInput)) ->
                 //convert string input 'builderInput' means FENDER/fender into corresponding enum value from 'InstrumentSpecBuilderEnum'
-                //'builderInput must match valid value in 'InstrumentSpecBuilderEnum' such as "fender", "gibson",etc
+                //builderInput must match valid value in 'InstrumentSpecBuilderEnum' such as "fender","gibson",etc
                 //if input is invalid it will throw exception
                 //sets Builder property of instrument specification using parsed enum value like InstrumentSpecBuilderEnum.FENDER
                 .Builder(Enum.Parse<InstrumentSpecBuilderEnum>(builderInput)) 
